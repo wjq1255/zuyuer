@@ -11,6 +11,8 @@ var bodyParser = require('body-parser');
 var compression = require('compression');
 var routes = require('./routes/index');
 var io = require('socket.io')();
+// 实验室
+var lab = require('./routes/lab');
 //用户相关功能
 var users = require('./routes/users')(io);
 var admin = require('./routes/admin');
@@ -137,6 +139,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 /*指定路由控制*/
 app.use('/', routes);
+app.use('/lab', lab);// 添加实验室页面
 app.use('/content', content);
 app.use('/users', users);
 //app.use('/admin', validat);
